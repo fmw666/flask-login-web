@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Flask</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/header-style.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/login-style.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/zzsc.css" />
+    <style>
+        body{
+            height:100%;background:gainsboro;overflow:hidden;
+        }
+        html{
+            height: 100%;
+        }
+        canvas{
+            z-index:-1;position:absolute;
+        }
+    </style>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/verificationNumbers.js" tppabs="js/verificationNumbers.js"></script>
+    <script src="../static/js/Particleground.js" tppabs="js/Particleground.js"></script>
+    <script>
+        $(document).ready(function () {
+            //粒子背景特效
+            $('body').particleground({
+                //  dotColor: '#5cbdaa',
+                //  lineColor: '#5cbdaa'
+                dotColor: '#5cbdaa',
+                lineColor: '#5cbdaa'
+            });
+            //验证码
+            createCode();
+            //测试提交，对接程序删除即可
+            $(".submit_btn").click(function () {
+                location.href = "javascrpt:;"/*tpa=http://***index.html*/;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="htmleaf-container">
+        <nav class="animenu">
+            <ul class="animenu__nav">
+                <li>
+                    <a href="/">主页</a>
+                </li>
+                <li>
+                    <a href="#">文章</a>
+                    <ul class="animenu__nav__child">
+                        <li><a href="">敬请期待</a></li>
+                        <li><a href="">敬请期待</a></li>
+                        <li><a href="">敬请期待</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">学习</a>
+                    <ul class="animenu__nav__child">
+                        <li><a href="">敬请期待</a></li>
+                        <li><a href="">敬请期待</a></li>
+                        <li><a href="">敬请期待</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="about">关于</a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://sc.chinaz.com/jiaoben/">站长素材</a>
+                </li>
+                <li class="pull-right"></li>
+                {% if "user_email" in session %}
+                <!--如果传入名字-->
+                    <li class="pull-right">
+                        <a href="logout">退出</a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="center" style="text-transform:none">{{ session.get("user_email") }}</a>
+                    </li>
+                {% else %}
+                    <li class="pull-right">
+                        <a href="regist">注册</a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="login">登录</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+<br /><br /><br /><br /><br />
+<div class="modal-footer navbar-fixed-bottom">
+    <div class="text-center">
+        <footer style="font-size: 14px;">作者范茂伟，如有需要，请联系fmw666.github.io</footer>
+    </div>
+</div>
+</body>
+
+</html>

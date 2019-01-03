@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="form-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <form class="form-horizontal" method="POST">
+                        <span class="heading">用户注册</span>
+                        <div class="form-group">
+                            <input type="email" required class="form-control" name="user_email" id="inputEmail3" placeholder="电子邮件">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" required class="form-control" name="user_pwd" id="inputPassword3" placeholder="密码">
+                            <i class="fa fa-lock"></i>
+                            <a href="#" title="请输入至少6位的密码" class="fa fa-question-circle"></a>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" required class="form-control" id="inputPassword3" placeholder="请再次输入密码">
+                            <i class="fa fa-lock"></i>
+                        </div>
+    
+                        <hr />
+                        <br />
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default">立即注册</button>
+                            <button onclick="window.location.href='login'" class="btn btn-default" style="margin-right: 20px;">已有账号？马上登录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

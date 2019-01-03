@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="form-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+				<form class="form-horizontal" method="POST">
+					<span class="heading">用户登录</span>
+					<div class="form-group">
+						<input required type="email" class="form-control" name="user_email" id="inputEmail3" placeholder="电子邮件"
+						value="{{ request.args.useremail }}">
+						<i class="fa fa-user"></i>
+					</div>
+					<div class="form-group">
+						<input required type="password" class="form-control" name="user_pwd" id="inputPassword3" placeholder="密码">
+						<i class="fa fa-lock"></i>
+						<a href="#" title="请输入至少6位的密码" class="fa fa-question-circle"></a>
+					</div>
+
+					<div class="form-group">
+						<div class="checkcode">
+							<input required type="text" style="text-transform: none;" id="J_codetext" placeholder="验证码" maxlength="4" class="form-control vernum-btn">
+							<!--<i class="fa fa-user"></i>-->
+							<canvas id="myCanvas" class="vernum-btn" style="padding-left: 11px;margin-left: 205px;letter-spacing: 13px;"
+								onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
+						</div>
+						<input type="button" id="J_codeinput" value="验证码核验" class="vernum-btn" autocomplete="off" onClick="validate();">
+					</div>
+					<hr />
+					<br />
+					<div class="form-group">
+						<div class="main-checkbox">
+							<input type="checkbox" value="None" id="checkbox1" name="check" />
+							<label for="checkbox1"></label>
+						</div>
+						<span class="text">记住我</span>
+						<button type="submit" name="login" class="btn btn-default" >立即登录</button>
+						<button onclick="window.location.href='regist'" class="btn btn-default" style="margin-right: 20px;" >没有账号？立即注册</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

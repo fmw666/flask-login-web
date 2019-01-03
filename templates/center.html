@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    {% if "user_email" not in session %}
+        <script>
+            window.location = "{{ url_for('login') }}"
+        </script>
+    {% endif %}
+    <div class="jumbotron text-center" style="height:80px;background-color: white; padding:5px 20px">
+        <h3>{{ session.get("user_email") }}的个人中心</h3>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item">个人信息</li>
+            <li class="list-group-item">修改账户</li>
+            <li class="list-group-item">最近游览</li>
+            <li class="list-group-item">我的收藏</li>
+            <li class="list-group-item">我的好友</li>
+            <li class="list-group-item">更多设置</li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <form class="form-horizontal" method="POST">
+            <span class="heading">个人信息</span>
+            <div class="form-group">
+                <input type="name" disabled class="form-control" name="user_name" placeholder="姓名">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group">
+                <input type="email" value=" " disabled class="form-control" name="user_email" id="inputEmail3" placeholder="电子邮件">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group">
+                <input type="password" value="" disabled class="form-control" id="inputPassword3" placeholder="密码">
+                <i class="fa fa-lock"></i>
+            </div>
+            <hr>
+            <div class="form-group">
+                <button onclick="window.location.href='login'" class="btn btn-default" style="margin-right: 20px;">修改账户</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
