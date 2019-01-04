@@ -1,7 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+    <link rel="stylesheet" href="../static/css/container/login-style.css">
+    <link rel="stylesheet" href="../static/css/container/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/container/zzsc.css">
     <div class="form-bg">
         <div class="container">
             <div class="row">
@@ -18,14 +20,31 @@
                             <a href="#" title="请输入至少6位的密码" class="fa fa-question-circle"></a>
                         </div>
                         <div class="form-group">
-                            <input type="password" required class="form-control" id="inputPassword3" placeholder="请再次输入密码">
+                            <input type="password" required class="form-control" name="user_pwd_2" id="inputPassword4" placeholder="请再次输入密码">
                             <i class="fa fa-lock"></i>
                         </div>
     
                         <hr />
                         <br />
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default">立即注册</button>
+                            <button type="submit" id="regist" class="btn btn-default">立即注册</button>
+                            <!-- <script>
+                                function regist() {
+                                    if (document.getElementById("inputPassword3").values == document.getElementById("inputPassword4").values) {
+                                        var classVal = document.getElementById("regist").getAttribute("class");
+                                        classVal = classVal.concat(" regist--ok");
+                                        document.getElementById("regist").setAttribute("class",classVal);
+                                        return true;
+                                    }
+                                    else if (document.getElementById("inputPassword3").values != document.getElementById("inputPassword4").values) {
+                                        var classVal = document.getElementById("regist").getAttribute("class");
+                                        classVal = classVal.concat(" regist--error");
+                                        document.getElementById("regist").setAttribute("class", classVal);
+                                        alert(document.getElementById("inputPassword3").values);
+                                        return false;
+                                    }
+                                }
+                            </script> -->
                             <button onclick="window.location.href='login'" class="btn btn-default" style="margin-right: 20px;">已有账号？马上登录</button>
                         </div>
                     </form>

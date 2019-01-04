@@ -1,0 +1,98 @@
+li{
+	list-style: none;
+}
+img{
+	outline: none;
+	border:none;
+}
+
+/*公共底部样式*/
+.footer{
+	position: fixed;
+	width:100% ;
+	/* background: #333; */
+	background: rgba(51,51,51,0.9);
+	box-sizing: border-box;
+	padding:5px 20px 0px 20px;
+	bottom: 0;
+}
+
+.footerinner{
+	height: 100%;
+	margin:0 auto;
+	position: relative;
+}
+.share{
+	width: 274px;
+	margin:0 auto;
+	overflow: hidden;
+}
+.share li{
+	float: left;
+	height: 50px;
+	padding:5px 14px;
+}
+.share li img{
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	border-radius: 20px;
+
+}
+
+.code_wrap{
+	position: absolute;
+	left:50%;
+	top:-235px;
+	margin-left: -450px;
+	width:900px;
+	z-index:50;
+}
+.code{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.code li{
+	float: left;
+	width: 200px;
+	height:240px;
+}
+.code li img{
+	width: 210px;
+	height:240px;
+	display: none;
+}
+.code li img.weibo{
+	position: absolute;
+	left: 244px;
+}
+.code li img.qq{
+	position: absolute;
+	left: 312px;
+
+}
+.code li img.twitter{
+	position: absolute;
+	left:382px;
+}
+.code li img.wechat{
+	position:absolute;
+	left:448px;
+}
+.footerinfo{
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+	opacity: 0.8;
+	filter:alpha(opacity=80);
+}
+.footerinfoTop{
+	margin:10px 0;
+}
+.footerinfoTop p{
+	line-height: 22px;
+}
+.footerinfoBottom{
+	font-size: 13px;
+}

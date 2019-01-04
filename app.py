@@ -4,29 +4,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-'''sqlite3 数据库'''
-app.config["DATABASE"] = 'database.db'
 app.config["SECRET_KEY"] = 'fanmaowei'
-
-def connect_db():
-    db = sqlite3.connect(app.config['DATABASE'])
-    return db
-
-def init_db():
-    with app.app_context():
-        db = connect_db()
-        with app.open_resource('schema.sql',mode='r') as f:
-            db.cursor().executescript(f.read())
-        db.commit()
-
-@app.before_request
-def before_request():
-    g.db = connect_db()
-
-@app.teardown_request
-def teardown_request(exception):
-    if hasattr(g, 'db'):
-        g.db.close()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -38,16 +16,22 @@ def login():
         # if request.form.to_dict().get('login') != None:
         useremail = request.form["user_email"]
         userpwd = request.form["user_pwd"]
-        if useremail == 'fmw19990718@qq.com' and userpwd == '19990718':
-            session["user_email"] = useremail
-            return redirect('/')
+        ''' 文件匹配账户信息 '''
+        f = open('users_info.text', 'r')
+        lines = f.readlines()
+        email_info = []
+        pwd_info = []
+        for i in range(0, len(lines)):
+            info = lines[i].split()
+            email_info.append(info[0])
+            pwd_info.append(info[1])
+        f.close()
+        ''' 文件匹配账户信息 '''
+        for i in range(0, len(lines)):
+            if useremail == email_info[i] and userpwd == pwd_info[i]:
+                session["user_email"] = useremail
+                return redirect('/')
     return render_template('login.html')
-
-def insert_user_to_db(user):
-    sql_insert = "insert into users (email, pwd) values (?, ?)"
-    args = [user.email, user.pwd]
-    g.db.execute(sql_insert, args)
-    g.db.commit()
 
 @app.route('/regist', methods=['GET', 'POST'])
 def regist():
@@ -55,7 +39,8 @@ def regist():
         user = User()
         user.email = request.form["user_email"]
         user.pwd = request.form["user_pwd"]
-        # insert_user_to_db(user)
+        with open('users_info.text', 'a', encoding='utf-8') as fp:
+            fp.write(user.email + ' ' + user.pwd + '\n')
         return redirect(url_for("login",useremail=user.email))
     return render_template('regist.html')
 

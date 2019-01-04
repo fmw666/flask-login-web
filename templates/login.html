@@ -1,7 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+<link rel="stylesheet" href="../static/css/container/login-style.css">
+<link rel="stylesheet" href="../static/css/container/font-awesome.min.css">
+<link rel="stylesheet" href="../static/css/container/zzsc.css">
+<script src="../static/js/verificationNumbers.js"></script>
 <div class="form-bg">
 	<div class="container">
 		<div class="row">
@@ -26,7 +29,7 @@
 							<canvas id="myCanvas" class="vernum-btn" style="padding-left: 11px;margin-left: 205px;letter-spacing: 13px;"
 								onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
 						</div>
-						<input type="button" id="J_codeinput" value="验证码核验" class="vernum-btn" autocomplete="off" onClick="validate();">
+						<input type="button" id="J_codeinput" style="color:white;" value="验证码核验" class="vernum-btn" autocomplete="off" onClick="validate();">
 					</div>
 					<hr />
 					<br />
@@ -36,7 +39,7 @@
 							<label for="checkbox1"></label>
 						</div>
 						<span class="text">记住我</span>
-						<button type="submit" name="login" class="btn btn-default" >立即登录</button>
+						<button type="submit" name="login" class="btn btn-default">立即登录</button>
 						<button onclick="window.location.href='regist'" class="btn btn-default" style="margin-right: 20px;" >没有账号？立即注册</button>
 					</div>
 				</form>
